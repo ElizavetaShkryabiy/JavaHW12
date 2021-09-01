@@ -28,15 +28,21 @@ public class ProductRepository {
     }
 
     public Product[] removeById(int id) {
-        int length = items.length - 1;
-        Product[] tmp = new Product[length];
-        int index = 0;
-        for (Product item : items) {
-            if (item.getId() != id) {
-                tmp[index] = item;
-                index++;
+        if (this.findById(id) != null) {
+            int length = items.length - 1;
+            Product[] tmp = new Product[length];
+            int index = 0;
+            for (Product item : items) {
+                if (item.getId() != id) {
+                    tmp[index] = item;
+                    index++;
+                }
             }
+            return items = tmp;
+        } else {
+            throw new NotFoundException("Sorry, element with id: " + id + " is not found");
         }
-        return items = tmp;
+
     }
 }
+

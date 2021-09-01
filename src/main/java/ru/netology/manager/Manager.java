@@ -60,4 +60,11 @@ public class Manager {
         return false;
 
     }
+
+    public Product[] removeById(int id) {
+        Product[] product = repository.removeById(id);
+        return product;
+    }
+
+
 }
